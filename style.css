@@ -27,4 +27,29 @@ img {
   position: absolute;
   left: 40%;
   top: 60%;
+  animation-name: carrotwalk;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+#goodcarrot1_container {
+  width: 7%;
+  position: absolute;
+  left: 60%;
+  top: 60%;
+}
+#score_board {
+  width: 10%;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+}
+
+@keyframes carrotwalk {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
