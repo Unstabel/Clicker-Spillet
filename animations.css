@@ -85,12 +85,12 @@
     transform: translate(0, -160%);
   }
   100% {
-    transform: translate(600%, 100%);
+    transform: translate(800%, 100%);
   }
 }
 @keyframes normalcarrot3 {
   0% {
-    transform: translate(0, -400%);
+    transform: translate(0, -600%);
   }
   10% {
     transform: translate(0, 0);
