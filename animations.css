@@ -21,30 +21,40 @@
 }
 #goodcarrot1_container {
   animation-name: normalcarrot2;
-  animation-duration: 4s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
 #goodcarrot2_container {
   animation-name: normalcarrot;
-  animation-duration: 4s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 #goodcarrot3_container {
   animation-name: normalcarrot3;
-  animation-duration: 4s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-delay: -1s;
 }
 #goodcarrot4_container {
   animation-name: normalcarrot4;
-  animation-duration: 4s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-delay: -1s;
+}
+.goodclick {
+  animation-name: click_goodcarrot;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.paused {
+  animation-play-state: paused;
 }
 
 @keyframes carrotwalk {
@@ -120,5 +130,13 @@
   }
   100% {
     transform: translate(-1000%, 100%);
+  }
+}
+@keyframes click_goodcarrot {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
   }
 }
