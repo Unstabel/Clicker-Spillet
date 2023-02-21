@@ -17,6 +17,12 @@ function start() {
   document
     .querySelector("#enemycarrot1")
     .addEventListener("mousedown", clickBadCarrot1);
+  document
+    .querySelector("#enemycarrot2")
+    .addEventListener("mousedown", clickBadCarrot2);
+  document
+    .querySelector("#enemycarrot3")
+    .addEventListener("mousedown", clickBadCarrot3);
 }
 function increase() {
   points = points + 1;
@@ -77,6 +83,26 @@ function clickBadCarrot1() {
   document
     .querySelector("#enemycarrot1")
     .addEventListener("animationend", enemyCarrotGone1);
+}
+function clickBadCarrot2() {
+  document
+    .querySelector("#enemycarrot2")
+    .removeEventListener("mousedown", clickBadCarrot2);
+  document.querySelector("#enemycarrot2_container").classList.add("paused");
+  document.querySelector("#enemycarrot2").classList.add("badclick");
+  document
+    .querySelector("#enemycarrot2")
+    .addEventListener("animationend", enemyCarrotGone2);
+}
+function clickBadCarrot3() {
+  document
+    .querySelector("#enemycarrot3")
+    .removeEventListener("mousedown", clickBadCarrot3);
+  document.querySelector("#enemycarrot3_container").classList.add("paused");
+  document.querySelector("#enemycarrot3").classList.add("badclick");
+  document
+    .querySelector("#enemycarrot3")
+    .addEventListener("animationend", enemyCarrotGone3);
 }
 
 function carrotGone1() {
@@ -184,7 +210,7 @@ function carrotGone4() {
 function enemyCarrotGone1() {
   // fjern event der bringer os herind
   document
-    .querySelector("#goodcarrot4")
+    .querySelector("#enemycarrot1")
     .removeEventListener("animationend", carrotGone1);
 
   increase();
@@ -208,4 +234,60 @@ function enemyCarrotGone1() {
   document
     .querySelector("#enemycarrot1")
     .addEventListener("click", clickBadCarrot1);
+}
+function enemyCarrotGone2() {
+  // fjern event der bringer os herind
+  document
+    .querySelector("#enemycarrot2")
+    .removeEventListener("animationend", carrotGone2);
+
+  increase();
+
+  // fjern forsvind-animation
+  document.querySelector("#enemycarrot2").classList.remove("badclick");
+
+  // fjern pause
+  document.querySelector("#enemycarrot2_container").classList.remove("paused");
+
+  // genstart falling animation
+  document
+    .querySelector("#enemycarrot2_container")
+    .classList.remove("enemycarrot2_walk");
+  document.querySelector("#enemycarrot2_container").offsetWidth;
+  document
+    .querySelector("#enemycarrot2_container")
+    .classList.add("enemycarrot2_walk");
+
+  // gør det muligt at klikke på coin igen
+  document
+    .querySelector("#enemycarrot2")
+    .addEventListener("click", clickBadCarrot2);
+}
+function enemyCarrotGone3() {
+  // fjern event der bringer os herind
+  document
+    .querySelector("#enemycarrot3")
+    .removeEventListener("animationend", carrotGone3);
+
+  increase();
+
+  // fjern forsvind-animation
+  document.querySelector("#enemycarrot3").classList.remove("badclick");
+
+  // fjern pause
+  document.querySelector("#enemycarrot3_container").classList.remove("paused");
+
+  // genstart falling animation
+  document
+    .querySelector("#enemycarrot3_container")
+    .classList.remove("enemycarrot3_walk");
+  document.querySelector("#enemycarrot3_container").offsetWidth;
+  document
+    .querySelector("#enemycarrot3_container")
+    .classList.add("enemycarrot3_walk");
+
+  // gør det muligt at klikke på coin igen
+  document
+    .querySelector("#enemycarrot3")
+    .addEventListener("click", clickBadCarrot3);
 }
