@@ -29,6 +29,16 @@ function increase() {
   displayNumber();
 }
 
+hearts = 0;
+function incrementLife() {
+  hearts = hearts + 1;
+  displayIncrementHeart();
+}
+
+function displayIncrementHeart() {
+  document.querySelector("#heart" + hearts).classList.add("blurHeart");
+}
+
 function displayNumber() {
   document.querySelector("#number").textContent = points;
 }
@@ -213,8 +223,7 @@ function enemyCarrotGone1() {
     .querySelector("#enemycarrot1")
     .removeEventListener("animationend", carrotGone1);
 
-  increase();
-
+  incrementLife();
   // fjern forsvind-animation
   document.querySelector("#enemycarrot1").classList.remove("badclick");
 
@@ -241,7 +250,7 @@ function enemyCarrotGone2() {
     .querySelector("#enemycarrot2")
     .removeEventListener("animationend", carrotGone2);
 
-  increase();
+  incrementLife();
 
   // fjern forsvind-animation
   document.querySelector("#enemycarrot2").classList.remove("badclick");
@@ -269,11 +278,10 @@ function enemyCarrotGone3() {
     .querySelector("#enemycarrot3")
     .removeEventListener("animationend", carrotGone3);
 
-  increase();
-
   // fjern forsvind-animation
   document.querySelector("#enemycarrot3").classList.remove("badclick");
 
+  incrementLife();
   // fjern pause
   document.querySelector("#enemycarrot3_container").classList.remove("paused");
 

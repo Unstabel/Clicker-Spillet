@@ -89,6 +89,10 @@ img {
   display: grid;
 }
 
+.blurHeart {
+  filter: grayscale(75%) blur(0.5px);
+}
+
 /* 
 @keyframes carrotwalk {
   0% {
