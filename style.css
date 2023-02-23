@@ -74,6 +74,21 @@ img {
   left: 0%;
   top: 0%;
 }
+#number {
+  position: absolute;
+  left: 43%;
+  top: 30%;
+  font-size: xx-large;
+}
+#life_board {
+  width: 20%;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  grid-template-columns: 100px 100px 100px;
+  display: grid;
+}
+
 /* 
 @keyframes carrotwalk {
   0% {
