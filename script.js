@@ -37,12 +37,12 @@ function incrementLife() {
 
 function displayIncrementHeart() {
   document.querySelector("#heart" + hearts).classList.add("blurHeart");
-  if (hearts <= 3) {
+  if (hearts >= 3) {
     lostGame();
   }
 }
 function lostGame() {
-  document.querySelector("#gameOver").classList.remove("hidden");
+  document.querySelector("#game_over").classList.remove("hidden");
 }
 
 function displayNumber() {
