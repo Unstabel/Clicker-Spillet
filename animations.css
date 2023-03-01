@@ -1,43 +1,43 @@
-.enemycarrot1_walk {
+.enemycarrot_walk1 {
   animation-name: enemycarrotwalk;
   animation-duration: 4s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
-.enemycarrot2_walk {
+.enemycarrot_walk2 {
   animation-name: enemycarrotwalkcrazy;
   animation-duration: 3.5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-direction: alternate;
 }
-.enemycarrot3_walk {
+.enemycarrot_walk3 {
   animation-name: enemycarrotwalkcrazy;
   animation-duration: 3.5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-direction: alternate;
 }
-.goodcarrot1_walk {
+.goodcarrot_walk1 {
   animation-name: normalcarrot2;
   animation-duration: 6s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
-.goodcarrot2_walk {
+.goodcarrot_walk2 {
   animation-name: normalcarrot;
   animation-duration: 6s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
-.goodcarrot3_walk {
+.goodcarrot_walk3 {
   animation-name: normalcarrot3;
   animation-duration: 6s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
-.goodcarrot4_walk {
+.goodcarrot_walk4 {
   animation-name: normalcarrot4;
   animation-duration: 6s;
   animation-iteration-count: infinite;
