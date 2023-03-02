@@ -99,7 +99,7 @@ function increase() {
   displayNumber();
 }
 
-hearts = 0;
+let hearts = 0;
 function incrementLife() {
   hearts = hearts + 1;
   displayIncrementHeart();

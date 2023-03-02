@@ -11,17 +11,35 @@ img {
   grid-template-rows: 100%;
   aspect-ratio: 16 / 9;
   width: 100%;
+  height: 100%;
   overflow: hidden;
   position: relative;
 }
 
 #start {
-  display: grid;
   width: 100%;
-  background-color: aqua;
+  height: 100%;
+  position: absolute;
+  display: grid;
+  grid-area: 1/1;
+  background-color: green;
   z-index: 5;
+  text-align: center;
 }
 
+#start_text {
+  position: relative;
+  top: -20%;
+}
+
+#btn_start {
+  width: 30%;
+  height: 10%;
+  background-color: rgb(87, 163, 165);
+  position: absolute;
+  left: 35%;
+  top: 50%;
+}
 #game_background {
   grid-area: 1 / 1;
   background-image: url(images/farmhouse.jpg);
@@ -93,7 +111,7 @@ img {
 #game_over {
   grid-area: 1 /1;
   z-index: 6;
-  /* display: grid; */
+  display: grid;
   justify-content: center;
   align-content: center;
   background-image: linear-gradient(150deg, #c90303 0%, #790909 100%);
@@ -114,45 +132,12 @@ img {
 #life_board {
   width: 20%;
   position: absolute;
-  right: 0%;
-  top: 0%;
-  grid-template-columns: 100px 100px 100px;
+  right: 0vw;
+  top: 0vw;
+  grid-template-columns: 6.5vw 6.5vw 6.5vw;
   display: grid;
 }
 
 .blurHeart {
   filter: grayscale(75%) blur(0.5px);
 }
-
-/* 
-@keyframes carrotwalk {
-  0% {
-    transform: translate(600%, 0);
-  }
-  100% {
-    transform: translate(-600%, 0);
-  }
-}
-@keyframes carrotwalkcrazy {
-  0% {
-    transform: translate(-600%, 0);
-  }
-  33% {
-    transform: translate(-200%, -100%);
-  }
-  66% {
-    transform: translate(200%, 100%);
-  }
-  100% {
-    transform: translate(600%, 0);
-  }
-}
-
-@keyframes normalcarrot {
-  0% {
-    transform: translate(600%, 80%);
-  }
-  100% {
-    transform: translate(-1000%, 20%);
-  }
-} */
