@@ -1,7 +1,15 @@
-window.addEventListener("load", start);
+"use strict";
+
+window.addEventListener("load", ready);
+
+function ready() {
+  console.log("JavaScript ready!");
+  document.querySelector("#btn_start").addEventListener("click", start);
+}
 let points = 0;
 function start() {
   console.log("start");
+  document.querySelector("#start").classList.add("hidden");
   clickCarrots();
   addAnimations();
   randomAnimations();
@@ -75,7 +83,7 @@ function restartAnimation() {
   let carrot = this;
   carrot.removeEventListener("animationiteration", randomAnimations);
 
-  let num = Math.floor(Math.random() * 3) + 1;
+  let num = Math.floor(Math.random() * 4) + 1;
   carrot.classList.remove(
     "goodcarrot_walk1",
     "goodcarrot_walk2",
@@ -176,3 +184,5 @@ function enemyCarrotGone1() {
 
   badCarrot.addEventListener("click", clickBadCarrot1);
 }
+
+function stopGame() {}

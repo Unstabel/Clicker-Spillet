@@ -4,6 +4,7 @@ body {
 img {
   width: 100%;
 }
+
 #screen {
   display: grid;
   grid-template-columns: 100%;
@@ -12,6 +13,13 @@ img {
   width: 100%;
   overflow: hidden;
   position: relative;
+}
+
+#start {
+  display: grid;
+  width: 100%;
+  background-color: aqua;
+  z-index: 5;
 }
 
 #game_background {
@@ -74,13 +82,17 @@ img {
   left: 0%;
   top: 0%;
 }
-.hidden {
+.hidden,
+#game_over.hidden,
+#level_complete.hidden,
+#game.hidden,
+#start.hidden {
   display: none;
 }
 
 #game_over {
   grid-area: 1 /1;
-  z-index: 999;
+  z-index: 6;
   /* display: grid; */
   justify-content: center;
   align-content: center;
@@ -97,7 +109,7 @@ img {
   position: absolute;
   left: 43%;
   top: 30%;
-  font-size: xx-large;
+  font-size: 2vw;
 }
 #life_board {
   width: 20%;

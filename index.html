@@ -9,6 +9,11 @@
     <title>Carrot Clicker</title>
   </head>
   <body id="screen">
+    <div id="start">
+      <h2>Carrot Clicker</h2>
+      <p>Collect 20 carrots before the time runs out</p>
+      <button id="btn_start" class="pulse">Start</button>
+    </div>
     <div id="game">
       <div id="game_background"></div>
       <div id="game_elements">
@@ -47,9 +52,10 @@
           <img id="heart3" src="images\Hear.png" alt="" />
         </section>
         <section id="time_board"></section>
-        <div id="game_over" class="hidden">Game over</div>
       </div>
     </div>
+    <div id="game_over" class="hidden">Game over</div>
+    <div id="game_complete" class="hidden">Game game</div>
     <script src="script.js"></script>
   </body>
 </html>
