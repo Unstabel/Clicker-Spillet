@@ -2,17 +2,47 @@
 
 window.addEventListener("load", ready);
 
+let hearts = 0;
+let points = 0;
+
 function ready() {
   console.log("JavaScript ready!");
   document.querySelector("#btn_start").addEventListener("click", start);
 }
-let points = 0;
+
 function start() {
   console.log("start");
-  document.querySelector("#start").classList.add("hidden");
+  showGameScreen();
   clickCarrots();
   addAnimations();
   randomAnimations();
+  // document.querySelector("#Timer").addEventListener("animationend", outOfTime);
+}
+function outOfTime() {
+  //Make if statetment. If collected over 10, game complete, else game over
+}
+function showGameScreen() {
+  // Skjul startskærm, game over og level complete
+  document.querySelector("#start").classList.add("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#game_complete").classList.add("hidden");
+}
+
+function showStartScreen() {
+  // fjern hidden fra startskærm og tilføj til game over og level complete
+  document.querySelector("#start").classList.remove("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#level_complete").classList.add("hidden");
+}
+
+function resetLives() {
+  lives = 0;
+  document.querySelector("#heart1").classList.remove("broken_heart");
+  document.querySelector("#heart2").classList.remove("broken_heart");
+  document.querySelector("#heart3").classList.remove("broken_heart");
+  document.querySelector("#heart1").classList.add("active_heart");
+  document.querySelector("#heart2").classList.add("active_heart");
+  document.querySelector("#heart3").classList.add("active_heart");
 }
 
 function clickCarrots() {
@@ -99,7 +129,6 @@ function increase() {
   displayNumber();
 }
 
-let hearts = 0;
 function incrementLife() {
   hearts = hearts + 1;
   displayIncrementHeart();
