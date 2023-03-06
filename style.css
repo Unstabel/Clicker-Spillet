@@ -102,7 +102,7 @@ img {
 }
 .hidden,
 #game_over.hidden,
-#level_complete.hidden,
+#game_complete.hidden,
 #game.hidden,
 #start.hidden {
   display: none;
@@ -123,6 +123,16 @@ img {
   position: absolute;
 }
 
+#game_complete {
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
+  color: #ffffff;
+}
+
 #number {
   position: absolute;
   left: 43%;
@@ -140,4 +150,51 @@ img {
 
 .blurHeart {
   filter: grayscale(75%) blur(0.5px);
+}
+
+#time_board {
+  position: relative;
+
+}
+
+#time_container {
+  position: relative;
+  width: 15%;
+  aspect-ratio: 30/6;
+  border: 2px solid black;
+  background-color: rgba(208, 204, 204, 0.383);
+  top: -1670%;
+  left: 63%;
+
+}
+
+#time_sprite {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: limegreen;
+  transform-origin: right;
+
+}
+
+.shrink {
+  animation-name: shrink_kf;
+  animation-duration: 15s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes shrink_kf {
+  0% {
+      scale: 1 1;
+      background-color: limegreen;
+  }
+  50% {
+      background-color: rgb(255, 230, 0);
+  }
+  100% {
+      scale: 0 1;
+      background-color: red;
+  }
 }

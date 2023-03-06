@@ -4,10 +4,13 @@ window.addEventListener("load", ready);
 
 let hearts = 0;
 let points = 0;
+let isGameRunning = false;
 
 function ready() {
   console.log("JavaScript ready!");
-  document.querySelector("#btn_start").addEventListener("click", start);
+  document.querySelector("#btn_start").addEventListener("click", startGame);
+  document.querySelector("#btn_restart").addEventListener("click", startGame);
+    document.querySelector("#btn_go_to_start").addEventListener("click", showStartScreen);
 }
 
 function start() {
@@ -32,32 +35,62 @@ function showStartScreen() {
   // fjern hidden fra startskærm og tilføj til game over og level complete
   document.querySelector("#start").classList.remove("hidden");
   document.querySelector("#game_over").classList.add("hidden");
-  document.querySelector("#level_complete").classList.add("hidden");
+  document.querySelector("#game_complete").classList.add("hidden");
 }
 
 function resetLives() {
-  lives = 0;
-  document.querySelector("#heart1").classList.remove("broken_heart");
-  document.querySelector("#heart2").classList.remove("broken_heart");
-  document.querySelector("#heart3").classList.remove("broken_heart");
+  hearts = 0;
+  document.querySelector("#heart1").classList.remove("blurHeart");
+  document.querySelector("#heart2").classList.remove("blurHeart");
+  document.querySelector("#heart3").classList.remove("blurHeart");
   document.querySelector("#heart1").classList.add("active_heart");
   document.querySelector("#heart2").classList.add("active_heart");
   document.querySelector("#heart3").classList.add("active_heart");
 }
 
+function resetPoints(){
+  points = 0;
+  displayPoints();
+}
+
+function startGame() {
+  isGameRunning = true;
+  console.log(isGameRunning)
+
+  resetLives();
+  resetPoints();
+  showGameScreen();
+
+  // Start baggrundsmusik
+
+  // start alle animationer
+  addAnimations();
+
+  // start timer
+  startTimer();
+
+  // Registrer click
+  clickCarrots();
+
+  // Registrer når bunden rammes
+  randomAnimations();
+
+
+}
+
 function clickCarrots() {
   document
     .querySelector("#goodcarrot1_container")
-    .addEventListener("mousedown", getpoint);
+    .addEventListener("mousedown", clickCarrot);
   document
     .querySelector("#goodcarrot2_container")
-    .addEventListener("mousedown", getpoint);
+    .addEventListener("mousedown", clickCarrot);
   document
     .querySelector("#goodcarrot3_container")
-    .addEventListener("mousedown", getpoint);
+    .addEventListener("mousedown", clickCarrot);
   document
     .querySelector("#goodcarrot4_container")
-    .addEventListener("mousedown", getpoint);
+    .addEventListener("mousedown", clickCarrot);
   document
     .querySelector("#enemycarrot1_container")
     .addEventListener("mousedown", clickBadCarrot1);
@@ -126,7 +159,7 @@ function restartAnimation() {
 
 function increase() {
   points = points + 1;
-  displayNumber();
+  displayPoints();
 }
 
 function incrementLife() {
@@ -142,19 +175,31 @@ function displayIncrementHeart() {
 }
 function lostGame() {
   document.querySelector("#game_over").classList.remove("hidden");
+
+  stopGame();
+  document.querySelector("#game_over_coins").textContent = points;
 }
 
-function displayNumber() {
+function levelComplete() {
+  console.log("Level Complete");
+  document.querySelector("#game_complete").classList.remove("hidden");
+  stopGame();
+  document.querySelector("#level_complete_coins").textContent = points;
+}
+
+function displayPoints() {
   document.querySelector("#number").textContent = points;
 }
 
-function getpoint() {
+function clickCarrot() {
   let carrot = this;
   console.log(carrot);
-  carrot.removeEventListener("mousedown", getpoint);
+  carrot.removeEventListener("mousedown", clickCarrot);
   carrot.classList.add("paused");
   carrot.querySelector("img").classList.add("goodclick");
   carrot.addEventListener("animationend", carrotGone1);
+  document.querySelector("#carrotMunch").currentTime = 0;
+  document.querySelector("#carrotMunch").play();
 }
 
 function clickBadCarrot1() {
@@ -189,7 +234,7 @@ function carrotGone1() {
   carrot.classList.add("goodcarrot_walk" + num);
 
   // gør det muligt at klikke på coin igen
-  carrot.addEventListener("click", getpoint);
+  carrot.addEventListener("click", clickCarrot);
 }
 
 function enemyCarrotGone1() {
@@ -214,4 +259,42 @@ function enemyCarrotGone1() {
   badCarrot.addEventListener("click", clickBadCarrot1);
 }
 
-function stopGame() {}
+function startTimer() {
+  // Sæt timer-animationen (shrink) i gang ved at tilføje klassen shrink til time_sprite
+  document.querySelector("#time_sprite").classList.add("shrink");
+
+  // Tilføj en eventlistener som lytter efter at animationen er færdig (animationend) og kalder funktionen timeIsUp
+  document.querySelector("#time_sprite").addEventListener("animationend", timeIsUp);
+}
+
+function timeIsUp() {
+  console.log("Tiden er gået!");
+
+  if (points >= 10) {
+      levelComplete();
+  } else {
+      lostGame();
+  }
+}
+
+function stopGame() {
+  isGameRunning = false;
+    // Stop animationer
+    // document.querySelector("#coin1_container").classList.remove("falling");
+    // document.querySelector("#coin2_container").classList.remove("falling");
+    // document.querySelector("#coin3_container").classList.remove("falling");
+    // document.querySelector("#bomb_container").classList.remove("falling");
+    // document.querySelector("#heart_container").classList.remove("falling");
+
+    // Fjern click
+    // document.querySelector("#coin1_container").removeEventListener("click", clickCoin);
+    // document.querySelector("#coin2_container").removeEventListener("click", clickCoin);
+    // document.querySelector("#coin3_container").removeEventListener("click", clickCoin);
+    // document.querySelector("#bomb_container").removeEventListener("click", clickBomb);
+    // document.querySelector("#heart_container").removeEventListener("click", clickHeart);
+
+    // Stop og nulstil lyde, fx baggrundsmusik
+
+    // nulstil timer - fjern animationen fra timeren (fjern klassen shrink fra time_sprite)
+    document.querySelector("#time_sprite").classList.remove("shrink");
+}

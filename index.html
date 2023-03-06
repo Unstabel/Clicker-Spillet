@@ -46,8 +46,6 @@
           <img id="heart2" src="images\Hear.png" alt="" />
           <img id="heart3" src="images\Hear.png" alt="" />
         </section>
-        <section id="time_board"></section>
-        <!-- Make a timer here -->
       </div>
     </div>
     <div id="start">
@@ -55,8 +53,25 @@
       <h3 id="start_text">Collect 10 carrots before the time runs out</h3>
       <button id="btn_start" class="pulse">Start</button>
     </div>
-    <div id="game_over" class="hidden">Game over</div>
-    <div id="game_complete" class="hidden">Game complete</div>
+    <div id="game_over" class="hidden">
+      <h2>Game Over 😵</h2>
+      <p>Sorry, you got <span id="game_over_coins">x</span> carrots!</p>
+      <p>You need at least 10 carrots.</p>
+      <button id="btn_restart" class="pulse">Restart Game</button>
+  </div>
+  <div id="game_complete" class="hidden">
+      <h2>Level Complete 🎉</h2>
+      <p>Congratulations! You got <span id="level_complete_coins">x</span> carrots!</p>
+      <button id="btn_go_to_start" class="pulse">Go to start</button>
+  </div>
+  <div id="time_board">
+    <div id="time_container">
+      <div id="time_sprite" class=""></div>
+    </div>
+<!-- audio elements -->
+<audio id="carrotMunch" src="sounds/goodcarrot.mp3"></audio>
+
+
     <script src="script.js"></script>
   </body>
 </html>
