@@ -35,7 +35,7 @@ img {
 #btn_start {
   width: 30%;
   height: 10%;
-  background-color: rgb(87, 163, 165);
+  background-color: yellowgreen;
   position: absolute;
   left: 35%;
   top: 50%;
@@ -154,7 +154,6 @@ img {
 
 #time_board {
   position: relative;
-
 }
 
 #time_container {
@@ -165,7 +164,6 @@ img {
   background-color: rgba(208, 204, 204, 0.383);
   top: -1670%;
   left: 63%;
-
 }
 
 #time_sprite {
@@ -174,12 +172,11 @@ img {
   height: 100%;
   background-color: limegreen;
   transform-origin: right;
-
 }
 
 .shrink {
   animation-name: shrink_kf;
-  animation-duration: 15s;
+  animation-duration: 17s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
@@ -187,14 +184,14 @@ img {
 
 @keyframes shrink_kf {
   0% {
-      scale: 1 1;
-      background-color: limegreen;
+    scale: 1 1;
+    background-color: limegreen;
   }
   50% {
-      background-color: rgb(255, 230, 0);
+    background-color: rgb(255, 230, 0);
   }
   100% {
-      scale: 0 1;
-      background-color: red;
+    scale: 0 1;
+    background-color: red;
   }
 }
