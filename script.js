@@ -4,13 +4,14 @@ window.addEventListener("load", ready);
 
 let hearts = 0;
 let points = 0;
-let isGameRunning = false;
 
 function ready() {
   console.log("JavaScript ready!");
   document.querySelector("#btn_start").addEventListener("click", startGame);
   document.querySelector("#btn_restart").addEventListener("click", startGame);
-    document.querySelector("#btn_go_to_start").addEventListener("click", showStartScreen);
+  document
+    .querySelector("#btn_go_to_start")
+    .addEventListener("click", showStartScreen);
 }
 
 function start() {
@@ -19,20 +20,15 @@ function start() {
   clickCarrots();
   addAnimations();
   randomAnimations();
-  // document.querySelector("#Timer").addEventListener("animationend", outOfTime);
 }
-function outOfTime() {
-  //Make if statetment. If collected over 10, game complete, else game over
-}
+
 function showGameScreen() {
-  // Skjul startskærm, game over og level complete
   document.querySelector("#start").classList.add("hidden");
   document.querySelector("#game_over").classList.add("hidden");
   document.querySelector("#game_complete").classList.add("hidden");
 }
 
 function showStartScreen() {
-  // fjern hidden fra startskærm og tilføj til game over og level complete
   document.querySelector("#start").classList.remove("hidden");
   document.querySelector("#game_over").classList.add("hidden");
   document.querySelector("#game_complete").classList.add("hidden");
@@ -48,34 +44,23 @@ function resetLives() {
   document.querySelector("#heart3").classList.add("active_heart");
 }
 
-function resetPoints(){
+function resetPoints() {
   points = 0;
   displayPoints();
 }
 
 function startGame() {
-  isGameRunning = true;
-  console.log(isGameRunning)
-
   resetLives();
   resetPoints();
   showGameScreen();
 
-  // Start baggrundsmusik
-
-  // start alle animationer
   addAnimations();
 
-  // start timer
   startTimer();
 
-  // Registrer click
   clickCarrots();
 
-  // Registrer når bunden rammes
   randomAnimations();
-
-
 }
 
 function clickCarrots() {
@@ -211,16 +196,13 @@ function clickBadCarrot1() {
 }
 
 function carrotGone1() {
-  // fjern event der bringer os herind
   let carrot = this;
 
   carrot.removeEventListener("animationend", carrotGone1);
   increase();
 
-  // fjern forsvind-animation
   carrot.querySelector("img").classList.remove("goodclick");
 
-  // fjern pause
   carrot.classList.remove("paused");
 
   let num = Math.floor(Math.random() * 4) + 1;
@@ -233,7 +215,6 @@ function carrotGone1() {
   carrot.offsetWidth;
   carrot.classList.add("goodcarrot_walk" + num);
 
-  // gør det muligt at klikke på coin igen
   carrot.addEventListener("click", clickCarrot);
 }
 
@@ -260,41 +241,68 @@ function enemyCarrotGone1() {
 }
 
 function startTimer() {
-  // Sæt timer-animationen (shrink) i gang ved at tilføje klassen shrink til time_sprite
   document.querySelector("#time_sprite").classList.add("shrink");
 
-  // Tilføj en eventlistener som lytter efter at animationen er færdig (animationend) og kalder funktionen timeIsUp
-  document.querySelector("#time_sprite").addEventListener("animationend", timeIsUp);
+  document
+    .querySelector("#time_sprite")
+    .addEventListener("animationend", timeIsUp);
 }
 
 function timeIsUp() {
   console.log("Tiden er gået!");
 
   if (points >= 10) {
-      levelComplete();
+    levelComplete();
   } else {
-      lostGame();
+    lostGame();
   }
 }
 
 function stopGame() {
-  isGameRunning = false;
-    // Stop animationer
-    // document.querySelector("#coin1_container").classList.remove("falling");
-    // document.querySelector("#coin2_container").classList.remove("falling");
-    // document.querySelector("#coin3_container").classList.remove("falling");
-    // document.querySelector("#bomb_container").classList.remove("falling");
-    // document.querySelector("#heart_container").classList.remove("falling");
+  document
+    .querySelector("#goodcarrot1_container")
+    .classList.remove("goodcarrot_walk1");
+  document
+    .querySelector("#goodcarrot2_container")
+    .classList.remove("goodcarrot_walk2");
+  document
+    .querySelector("#goodcarrot3_container")
+    .classList.remove("goodcarrot_walk3");
+  document
+    .querySelector("#goodcarrot4_container")
+    .classList.remove("goodcarrot_walk4");
 
-    // Fjern click
-    // document.querySelector("#coin1_container").removeEventListener("click", clickCoin);
-    // document.querySelector("#coin2_container").removeEventListener("click", clickCoin);
-    // document.querySelector("#coin3_container").removeEventListener("click", clickCoin);
-    // document.querySelector("#bomb_container").removeEventListener("click", clickBomb);
-    // document.querySelector("#heart_container").removeEventListener("click", clickHeart);
+  document
+    .querySelector("#enemycarrot1_container")
+    .classList.remove("enemycarrot_walk1");
+  document
+    .querySelector("#enemycarrot2_container")
+    .classList.remove("enemycarrot_walk2");
+  document
+    .querySelector("#enemycarrot3_container")
+    .classList.remove("enemycarrot_walk3");
 
-    // Stop og nulstil lyde, fx baggrundsmusik
+  document
+    .querySelector("#goodcarrot1_container")
+    .removeEventListener("mousedown", clickCarrot);
+  document
+    .querySelector("#goodcarrot2_container")
+    .removeEventListener("mousedown", clickCarrot);
+  document
+    .querySelector("#goodcarrot3_container")
+    .removeEventListener("mousedown", clickCarrot);
+  document
+    .querySelector("#goodcarrot4_container")
+    .removeEventListener("mousedown", clickCarrot);
+  document
+    .querySelector("#enemycarrot1_container")
+    .removeEventListener("mousedown", clickBadCarrot1);
+  document
+    .querySelector("#enemycarrot2_container")
+    .removeEventListener("mousedown", clickBadCarrot1);
+  document
+    .querySelector("#enemycarrot3_container")
+    .removeEventListener("mousedown", clickBadCarrot1);
 
-    // nulstil timer - fjern animationen fra timeren (fjern klassen shrink fra time_sprite)
-    document.querySelector("#time_sprite").classList.remove("shrink");
+  document.querySelector("#time_sprite").classList.remove("shrink");
 }
