@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  user-select: none;
 }
 img {
   width: 100%;
@@ -25,11 +26,13 @@ img {
   background-color: green;
   z-index: 5;
   text-align: center;
+  color: white;
 }
 
 #start_text {
   position: relative;
-  top: -20%;
+  top: 15%;
+  color: white;
 }
 
 #btn_start {
@@ -38,7 +41,7 @@ img {
   background-color: yellowgreen;
   position: absolute;
   left: 35%;
-  top: 50%;
+  top: 55%;
 }
 #game_background {
   grid-area: 1 / 1;
@@ -176,7 +179,7 @@ img {
 
 .shrink {
   animation-name: shrink_kf;
-  animation-duration: 17s;
+  animation-duration: 23s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
